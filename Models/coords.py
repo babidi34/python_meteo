@@ -10,8 +10,9 @@ class Coordinates:
     #FIXME
     self.lat = lat
     self.lon = lon
-    self.coords = 0
-    print(self.lat,self.lon)
+    self.coords = str(self.lat)+","+str(lon)
+# pour test    print(self.lat,self.lon)
+# pour test    print(self.coords)
 
   def get_latitude(self):
     """

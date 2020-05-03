@@ -1,3 +1,6 @@
+import requests
+from requests import get
+
 class WeatherForecastClient:
   """
   La class WeatherForecastClient permet de préparer vos requêtes vers OpenWeatherMaps, avec des réglages données
@@ -13,6 +16,10 @@ class WeatherForecastClient:
     avec des paramètres tel que le système d'unité et la langue
     """
     #FIXME
+    self.systeme_unite="Celsius"
+    self.langue="français"
+    self.ville = input("Saisissez votre ville : ")
+
 
   def fetch_weather(self):
     """
@@ -20,6 +27,10 @@ class WeatherForecastClient:
     Retourne un objet WeatherData
     """
     #FIXME
+    meteo_requete = get('http://api.openweathermap.org/data/2.5/weather?q='+self.ville+'&appid='+WeatherForecastClient.api_key)
+    meteo = meteo_requete.json()['weather']
+# pour mes tests    print(meteo)
+    return meteo
   
   def fetch_forecast(self):
     """
@@ -27,3 +38,7 @@ class WeatherForecastClient:
     Retourn un objet ForecastData
     """
     #FIXME
+
+"""  Pour mes tests
+test_meteo = WeatherForecastClient()
+test_meteo.fetch_weather()"""
