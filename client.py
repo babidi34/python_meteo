@@ -38,7 +38,13 @@ class WeatherForecastClient:
     Retourn un objet ForecastData
     """
     #FIXME
-
+    meteo_r5 = get('http://api.openweathermap.org/data/2.5/forecast?q='+self.ville+'&appid='+WeatherForecastClient.api_key)
+    meteo5 = meteo_r5.json()['list']
+# pour mes tests    print(meteo5)
+    return meteo5
 """  Pour mes tests
 test_meteo = WeatherForecastClient()
-test_meteo.fetch_weather()"""
+test_meteo.fetch_weather()
+
+test_meteo5 = WeatherForecastClient()
+test_meteo5.fetch_forecast()"""
