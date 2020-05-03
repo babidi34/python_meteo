@@ -99,7 +99,7 @@ def __init__(self):
   self.temperature = 0
 
 def parse(json):
-  self.temperature = json['main']['temp']
+   self.temperature = json['main']['temp']
 
 ```
 

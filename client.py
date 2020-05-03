@@ -16,8 +16,8 @@ class WeatherForecastClient:
     avec des paramètres tel que le système d'unité et la langue
     """
     #FIXME
-    self.systeme_unite="Celsius"
-    self.langue="français"
+    self.systeme_unite="metric"
+    self.langue="fr"
     self.ville = input("Saisissez votre ville : ")
 
 
@@ -27,8 +27,8 @@ class WeatherForecastClient:
     Retourne un objet WeatherData
     """
     #FIXME
-    meteo_requete = get('http://api.openweathermap.org/data/2.5/weather?q='+self.ville+'&appid='+WeatherForecastClient.api_key)
-    meteo = meteo_requete.json()['weather']
+    meteo_requete = get('http://api.openweathermap.org/data/2.5/weather?q='+self.ville+'&lang='+self.langue+'&units='+self.systeme_unite+'&appid='+WeatherForecastClient.api_key)
+    meteo = meteo_requete.json()['main']
 # pour mes tests    print(meteo)
     return meteo
   
@@ -38,9 +38,9 @@ class WeatherForecastClient:
     Retourn un objet ForecastData
     """
     #FIXME
-    meteo_r5 = get('http://api.openweathermap.org/data/2.5/forecast?q='+self.ville+'&appid='+WeatherForecastClient.api_key)
+    meteo_r5 = get('http://api.openweathermap.org/data/2.5/forecast?q='+self.ville+'&lang='+self.langue+'&units='+self.systeme_unite+'&appid='+WeatherForecastClient.api_key)
     meteo5 = meteo_r5.json()['list']
-# pour mes tests    print(meteo5)
+    # pour mes tests        print(meteo5)
     return meteo5
 """  Pour mes tests
 test_meteo = WeatherForecastClient()
