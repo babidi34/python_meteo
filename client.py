@@ -18,7 +18,6 @@ class WeatherForecastClient:
     #FIXME
     self.systeme_unite="metric"
     self.langue="fr"
-    self.ville = input("Saisissez votre ville : ")
     self.lat = 0.0
     self.lon = 0.0
 
