@@ -100,7 +100,7 @@ def __init__(self):
 
 def parse(json):
    self.temperature = json['main']['temp']
-
+openweather 
 ```
 
 ### Etape 2.9 : Utilisation de nos modèles de données
