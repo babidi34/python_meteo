@@ -1,4 +1,3 @@
-import requests
 class WeatherData:
   def __init__(self):
     """

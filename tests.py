@@ -1,13 +1,9 @@
-class Coordinates:
+import client, Models
 
-  def __init__(self, lat, lon):
-    """
-    Créer une instance de Coordinates pour les latitude & longitude données
-    """
-    #FIXME
-    self.lat = lat
-    self.lon = lon
-    print("la latitude: ", self.lat,", la longitude: ",self.lon)
+test_meteo = client.WeatherForecastClient()
+test_meteo = test_meteo.fetch_weather()
 
-coorman = Coordinates(75.0,14.3)
-print(coorman.lat)
+test_meteo5 = client.WeatherForecastClient()
+test_meteo5 = test_meteo5.fetch_forecast()
+print(test_meteo)
+print(test_meteo5)
