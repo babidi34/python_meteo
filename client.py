@@ -41,9 +41,5 @@ class WeatherForecastClient:
     meteo5 = meteo_r5.json()
     return meteo5
 
-  def print_today_weather(self):
-    pass
-  def print_forecast_weather(self):
-    pass
 
 

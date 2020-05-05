@@ -14,19 +14,25 @@ class WeatherData:
     self.taux_humi = 0
 
   @staticmethod
-  def parse(json):
+  def parse(self,json):
     """
     Parse un dictionaire JSON pour remplir les attributs de WeatherData
     """
     #FIXME
-    WeatherData.temp = json['main']['temp']
-    WeatherData.temp_min = json['main']['temp_min']
-    WeatherData.temp_max = json['main']['temp_max']
-    WeatherData.temp_ressenti = json['main']['pressure']
-    WeatherData.vitesse_vent = json['wind']['speed']
-    WeatherData.heure_lever = json['sys']['sunrise']
-    WeatherData.heure_coucher = json['sys']['sunset']
-    WeatherData.taux_humi = json['main']['humidity']
+    self.temp = json['main']['temp']
+    self.temp_min = json['main']['temp_min']
+    self.temp_max = json['main']['temp_max']
+    self.temp_ressenti = json['main']['pressure']
+    self.vitesse_vent = json['wind']['speed']
+    self.heure_lever = json['sys']['sunrise']
+    self.heure_coucher = json['sys']['sunset']
+    self.taux_humi = json['main']['humidity']
+    return WeatherData
+
+  def print_today_weather(self):
+    print("Température actuelle : {temp} \nTempérature minimal : {temp_min}\n\
+Température maximale : {temp_max}\nTempérature ressenti : {temp_ressenti}\n\
+Vitesse du vent : {vent}\nHeure de l'aube : {aube}\nHeure du crépuscule : {crepuscule}\nHumidité : {humi}  ".format(temp=self.temp, temp_min=self.temp_min, temp_max=self.temp_max, temp_ressenti=self.temp_ressenti, vent=self.vitesse_vent, aube=self.heure_lever,crepuscule=self.heure_coucher,humi=self.taux_humi))
 
 class ForecastData:
   def __init__(self):
@@ -47,25 +53,31 @@ class ForecastData:
     self.day_plus_4 = 32
     self.day_plus_5 = 40
   @staticmethod
-  def parse(json):
+  def parse(self,json):
     """
     Parse un dictionaire JSON pour remplir les attributs de ForecastData
     """
     #FIXME
-    ForecastData.day = 0
-    ForecastData.day_plus_1 = 8
-    ForecastData.day_plus_2 = 16
-    ForecastData.day_plus_3 = 24
-    ForecastData.day_plus_4 = 32
-    ForecastData.day_plus_5 = 40
-    ForecastData.temp_min_day = json['list'][ForecastData.day]['main']['temp_min']
-    ForecastData.temp_max_day = json['list'][ForecastData.day]['main']['temp_max']
+    self.day = 0
+    self.day_plus_1 = 8
+    self.day_plus_2 = 16
+    self.day_plus_3 = 24
+    self.day_plus_4 = 32
+    self.day_plus_5 = 40
+    self.temp_min_day = json['list'][ForecastData.day]['main']['temp_min']
+    self.temp_max_day = json['list'][ForecastData.day]['main']['temp_max']
     somme_max_min = ForecastData.temp_min_day + ForecastData.temp_max_day
-    ForecastData.temp_moyenne = somme_max_min / 2 # pour obtenir la moyenne des températures max et mini sur une journée
-    ForecastData.temp_ress_moy = json['list'][ForecastData.day]['main']['pressure']
-    ForecastData.vitesse_vent_moy  =json['list'][ForecastData.day]['wind']['speed']
-    ForecastData.taux_humi_moy = json['list'][ForecastData.day]['main']['humidity']
+    self.temp_moyenne = somme_max_min / 2 # pour obtenir la moyenne des températures max et mini sur une journée
+    self.temp_ress_moy = json['list'][ForecastData.day]['main']['pressure']
+    self.vitesse_vent_moy  =json['list'][ForecastData.day]['wind']['speed']
+    self.taux_humi_moy = json['list'][ForecastData.day]['main']['humidity']
+    return ForecastData
 
+
+  def print_forecast_weather(self):
+    pass
+
+  
 """ Pour tester WeatherData.parse(json)
 n = requests.get('http://api.openweathermap.org/data/2.5/weather?q=Nanterre&units=metric&lang=fr&appid=f3143d70cd7df528a06b96cd3ef2a841')
 n = n.json()
