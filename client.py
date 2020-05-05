@@ -1,5 +1,6 @@
 import requests
 from requests import get
+from Models import coords
 
 class WeatherForecastClient:
   """
@@ -18,8 +19,10 @@ class WeatherForecastClient:
     #FIXME
     self.systeme_unite="metric"
     self.langue="fr"
-    self.lat = "0.0"
-    self.lon = "0.0"
+    mes_coord = coords.Coordinates()
+    mes_coord.fromIP(mes_coord)
+    self.lat = mes_coord.lat
+    self.lon = mes_coord.lon
 
   def fetch_weather(self):
     """
